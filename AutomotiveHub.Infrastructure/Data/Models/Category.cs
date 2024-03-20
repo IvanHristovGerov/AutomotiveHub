@@ -7,6 +7,7 @@ namespace AutomotiveHub.Infrastructure.Data.Models
     public class Category
     {
         [Key]
+        [Comment("Category identifier")]
         public int Id { get; set; }
 
         [Required]

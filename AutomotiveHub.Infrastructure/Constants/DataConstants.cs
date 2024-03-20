@@ -20,5 +20,14 @@
 
         public const int CategoryNameMinLength = 2;
         public const int CategoryNameMaxLength = 50;
+
+        public const int DealerNameMinLength = 1;
+        public const int DealerNameMaxLength = 50;
+
+        public const int DealerPhoneNumberMinLength = 5;
+        public const int DealerPhoneNumberMaxLength = 30;
+
+        public const int UserFullNameMinLength = 5;
+        public const int UserFullNameMaxLength = 50;
     }
 }
