@@ -16,5 +16,9 @@
 
         public const int CarImageUrlMinLength = 5;
         public const int CarImageUrlMaxLength = 500;
+
+
+        public const int CategoryNameMinLength = 2;
+        public const int CategoryNameMaxLength = 50;
     }
 }
