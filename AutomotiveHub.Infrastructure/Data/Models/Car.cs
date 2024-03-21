@@ -57,7 +57,7 @@ namespace AutomotiveHub.Infrastructure.Data.Models
         [Comment("Category identifier")]
         public int CategoryId { get; set; }
 
-        [ForeignKey(nameof(Category))]
+        [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; } = null!;
 
 
