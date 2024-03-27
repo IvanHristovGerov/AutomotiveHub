@@ -12,5 +12,6 @@ namespace AutomotiveHub.Infrastructure.Enumerations
         Petrol = 1,
         LPG = 2,
         Electrical = 3
+        
     }
 }
