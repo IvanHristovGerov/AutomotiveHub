@@ -6,13 +6,9 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AutomotiveHubDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddApplicationDbContext(builder.Configuration);
+builder.Services.AddApplicationIdentity(builder.Configuration);
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<AutomotiveHubDbContext>();
 
 builder.Services.AddControllersWithViews();
 
