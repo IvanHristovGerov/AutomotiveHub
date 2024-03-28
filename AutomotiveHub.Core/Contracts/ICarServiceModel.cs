@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AutomotiveHub.Core.Contracts
 {
-    public interface ICarModel
+    public interface ICarServiceModel
     {
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public int PricePerDay { get; set; }
     }
 }

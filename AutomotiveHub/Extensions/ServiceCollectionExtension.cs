@@ -1,12 +1,23 @@
 ﻿
+using AutomotiveHub.Core.Contracts;
+using AutomotiveHub.Core.Services;
 using AutomotiveHub.Data;
 using AutomotiveHub.Infrastructure.Data.Models;
+using AutomotiveHub.Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtension
     {
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        {
+            services.AddScoped<ICarService, CarService>();
+            services.AddScoped<IDealerService, DealerService>();
+
+            return services;
+        }
+
         //DbContext settings
         public static IServiceCollection AddApplicationDbContext(this IServiceCollection services, IConfiguration configuration)
         {
@@ -14,6 +25,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddDbContext<AutomotiveHubDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            services.AddScoped<IRepository, Repository>();
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 

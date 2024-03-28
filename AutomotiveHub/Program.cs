@@ -10,7 +10,11 @@ builder.Services.AddApplicationDbContext(builder.Configuration);
 builder.Services.AddApplicationIdentity(builder.Configuration);
 
 
+
 builder.Services.AddControllersWithViews();
+
+//Adding the services
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 

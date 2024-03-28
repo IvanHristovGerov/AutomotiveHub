@@ -1,0 +1,21 @@
+﻿@model CarServiceModel
+
+<div class="col-md-4">
+    <div class="card mb-3">
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Car Image">
+        <div class="card-body text-center">
+            <h4>@Model.Brand</h4>
+            <h6>Model: <b>@Model.Model</b></h6>
+            <h6>Fuel Type: <b>@Model.Fuel</b></h6>
+            <h6>Gearbox: <b>@Model.Transmission</b></h6>
+            <h6>
+                Price Per Day:
+                <b>@String.Format("{0:f2}", Model.PricePerDay) BGN</b>
+            </h6>
+            <h6>(@(Model.IsRented ? "Rented" : "Not Rented"))</h6>
+            <br />
+            <a asp-controller="Car" asp-action="Details" asp-route-id="@Model.Id"
+               asp-route-information="@Model.GetInformation()" class="btn btn-success">Details</a>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@
 
 namespace AutomotiveHub.Controllers
 {
-    public class DealerController : Controller
+    public class DealerController : BaseController
     {
         public IActionResult Index()
         {

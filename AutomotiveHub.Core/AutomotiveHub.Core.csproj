@@ -10,8 +10,4 @@
     <ProjectReference Include="..\AutomotiveHub.Infrastructure\AutomotiveHub.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
