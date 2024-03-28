@@ -4,18 +4,16 @@ using AutomotiveHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AutomotiveHub.Data.Migrations
+namespace AutomotiveHub.Infrastructure.Migrations
 {
     [DbContext(typeof(AutomotiveHubDbContext))]
-    [Migration("20240321191326_DomainTablesAdded")]
-    partial class DomainTablesAdded
+    partial class AutomotiveHubDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,8 +47,8 @@ namespace AutomotiveHub.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
                         .HasComment("Car's description");
 
                     b.Property<int>("Fuel")
@@ -62,6 +60,9 @@ namespace AutomotiveHub.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)")
                         .HasComment("Image URL");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Kilometers")
                         .HasMaxLength(250000)
@@ -99,6 +100,120 @@ namespace AutomotiveHub.Data.Migrations
                     b.HasIndex("RenterId");
 
                     b.ToTable("Cars");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Brand = "Audi",
+                            CategoryId = 1,
+                            DealerId = 3,
+                            Description = "4.0l twin-turbo V8 with bigger turbochargers, modified ECU for a total of 768bhp. This high performance Audi transformed by Mansory is the unforgettable weekend escape.",
+                            Fuel = 1,
+                            ImageUrl = "https://www.topgear.com/sites/default/files/2021/10/904263.jpg?w=892&h=502",
+                            IsActive = true,
+                            Kilometers = 4500,
+                            Model = "RS6",
+                            PricePerDay = 399,
+                            Transmission = 0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Brand = "Audi",
+                            CategoryId = 2,
+                            DealerId = 1,
+                            Description = "4.0-litre twin-turbocharged V8.With 563HP and 590lb-ft of Torque is everything you need for a long and dynamic ride.",
+                            Fuel = 1,
+                            ImageUrl = "https://www.topgear.com/sites/default/files/2022/06/Medium-29191-AudiS8TFSIquattro.jpg?w=976&h=549",
+                            IsActive = true,
+                            Kilometers = 1350,
+                            Model = "S8",
+                            PricePerDay = 499,
+                            Transmission = 0,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Brand = "Porshe",
+                            CategoryId = 5,
+                            DealerId = 3,
+                            Description = "You need a track car for the streets? This stylish sport car is for you.",
+                            Fuel = 1,
+                            ImageUrl = "https://www.topgear.com/sites/default/files/cars-car/carousel/2020/12/pcgb20_0589_fine.jpg?w=892&h=502",
+                            IsActive = true,
+                            Kilometers = 7500,
+                            Model = "911 Turbo",
+                            PricePerDay = 349,
+                            Transmission = 0,
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Brand = "Volkswagen",
+                            CategoryId = 3,
+                            DealerId = 2,
+                            Description = "3.0-litre V6 Diesel with 282bhp.It's more than capable of holding its own on the road, now in utter refinement, and it’s highly impressive off the beaten track too. ",
+                            Fuel = 0,
+                            ImageUrl = "https://www.topgear.com/sites/default/files/2023/11/Medium-36020-TouaregElegance.jpg?w=892&h=502",
+                            IsActive = true,
+                            Kilometers = 3500,
+                            Model = "Touareg",
+                            PricePerDay = 299,
+                            Transmission = 0,
+                            Year = 2020
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Brand = "Lexus",
+                            CategoryId = 1,
+                            DealerId = 1,
+                            Description = "If you need a convertible for the summer trip this Lexus nails it.With a V8 465bhp and 398lb-ft.Comfortable, stylish and exclusive.",
+                            Fuel = 1,
+                            ImageUrl = "https://www.topgear.com/sites/default/files/cars-car/carousel/2020/09/lc500c_238-scaled.jpg?w=892&h=502",
+                            IsActive = true,
+                            Kilometers = 11600,
+                            Model = "LC500 Convertible",
+                            PricePerDay = 379,
+                            Transmission = 0,
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Brand = "Audi",
+                            CategoryId = 3,
+                            DealerId = 2,
+                            Description = "350bhp with a battery-89kWh for a range up to 460km.",
+                            Fuel = 3,
+                            ImageUrl = "https://www.topgear.com/sites/default/files/2024/03/32673-Q8ETRONDEANSMITH07.jpg?w=892&h=502",
+                            IsActive = true,
+                            Kilometers = 15850,
+                            Model = "Q8 e-tron",
+                            PricePerDay = 399,
+                            Transmission = 0,
+                            Year = 2020
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Brand = "Toyota",
+                            CategoryId = 3,
+                            DealerId = 2,
+                            Description = "If you need practical and useful SUV this is the one.It has 2.5-litre four-cylinder engine good for about 203hp.",
+                            Fuel = 0,
+                            ImageUrl = "https://www.topgear.com/sites/default/files/2024/02/15%20Toyota%20RAV4%20US%20review%202024.jpg?w=892&h=502",
+                            IsActive = true,
+                            Kilometers = 24500,
+                            Model = "Rav4",
+                            PricePerDay = 250,
+                            Transmission = 0,
+                            Year = 2018
+                        });
                 });
 
             modelBuilder.Entity("AutomotiveHub.Infrastructure.Data.Models.Category", b =>
@@ -112,13 +227,50 @@ namespace AutomotiveHub.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
                         .HasComment("Category's name");
 
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Sports car"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Sedan"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "SUV"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Estate"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Hatchback"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Convertible"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Van"
+                        });
                 });
 
             modelBuilder.Entity("AutomotiveHub.Infrastructure.Data.Models.City", b =>
@@ -139,6 +291,28 @@ namespace AutomotiveHub.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Sofia"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Plovdiv"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Burgas"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Blagoevgrad"
+                        });
                 });
 
             modelBuilder.Entity("AutomotiveHub.Infrastructure.Data.Models.Dealer", b =>
@@ -172,6 +346,29 @@ namespace AutomotiveHub.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Dealers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Luxury Motors",
+                            PhoneNumber = "+359888321456",
+                            UserId = "8cb5bcce-a58e-4271-9a58-13811fc3c9e3"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Prestige Rentals",
+                            PhoneNumber = "+359894333878",
+                            UserId = "0e1bd4e6-ab89-4490-a276-87c350e034dd"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Fast Lane Autos",
+                            PhoneNumber = "+359878931336",
+                            UserId = "0e1bd4e6-ab89-4490-a276-87c350e034dd"
+                        });
                 });
 
             modelBuilder.Entity("AutomotiveHub.Infrastructure.Data.Models.Dealership", b =>
@@ -208,6 +405,32 @@ namespace AutomotiveHub.Data.Migrations
                     b.HasIndex("DealerId");
 
                     b.ToTable("Dealerships");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Sofia, bul.Botevgradsko shose 320",
+                            CityId = 1,
+                            DealerId = 3,
+                            Name = "Race Culture Dealership"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Plovdiv, bul.Bulgaria 3",
+                            CityId = 2,
+                            DealerId = 1,
+                            Name = "LuxNWheels Dealership"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Sofia, bul.Botevgradsko shose 320",
+                            CityId = 4,
+                            DealerId = 2,
+                            Name = "Auto Class Dealership"
+                        });
                 });
 
             modelBuilder.Entity("AutomotiveHub.Infrastructure.Data.Models.Reservation", b =>
@@ -247,6 +470,18 @@ namespace AutomotiveHub.Data.Migrations
                     b.HasIndex("ReservationPeriodId");
 
                     b.ToTable("Reservations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarId = 2,
+                            EndDate = new DateTime(2024, 3, 31, 10, 34, 28, 629, DateTimeKind.Local).AddTicks(7913),
+                            IsActive = false,
+                            ReservationPeriodId = 2,
+                            StartDate = new DateTime(2024, 3, 28, 10, 34, 28, 629, DateTimeKind.Local).AddTicks(7870),
+                            TotalPrice = 1397
+                        });
                 });
 
             modelBuilder.Entity("AutomotiveHub.Infrastructure.Data.Models.ReservationPeriod", b =>
@@ -265,6 +500,38 @@ namespace AutomotiveHub.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ReservationPeriods");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Days = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Days = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Days = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Days = 7
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Days = 10
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Days = 30
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -336,6 +603,7 @@ namespace AutomotiveHub.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -372,6 +640,7 @@ namespace AutomotiveHub.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -488,6 +757,44 @@ namespace AutomotiveHub.Data.Migrations
                         .HasColumnType("bit");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8cb5bcce-a58e-4271-9a58-13811fc3c9e3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "843e4b0a-b843-4d8c-89cc-a3b58be59e8b",
+                            Email = "ivangerov@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "IVANGEROV@GMAIL.COM",
+                            NormalizedUserName = "IVANGEROV",
+                            PasswordHash = "AQAAAAEAACcQAAAAELQsJqR7n+4S624t7pjTs9eSK7qrjNsmmPrxIdNKembSkl6FlHdrm5gE+kVkQUdJUw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "c02804c4-e561-4660-b1ac-7366e2c16360",
+                            TwoFactorEnabled = false,
+                            UserName = "IvanGerov",
+                            FullName = "Ivan Gerov",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            Id = "0e1bd4e6-ab89-4490-a276-87c350e034dd",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3d5c788a-afc4-473b-97c0-47e67575667a",
+                            Email = "admindealer@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMINDEALER@GMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM4rnuFMvmr7QggQLpF6MJl2g6YTgOGWJs0V/Q1rsMlKmGPSY1HbXR5M/zwpM1feNw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d02cb2fb-7b8c-4fa2-93a6-503cf64e1ce4",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin",
+                            FullName = "Administrator",
+                            IsActive = true
+                        });
                 });
 
             modelBuilder.Entity("AutomotiveHub.Infrastructure.Data.Models.Car", b =>

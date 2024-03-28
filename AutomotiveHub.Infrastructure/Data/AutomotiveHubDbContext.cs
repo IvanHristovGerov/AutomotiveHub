@@ -13,6 +13,43 @@ namespace AutomotiveHub.Data
 
         }
 
+       
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<ApplicationUser>()
+                .Property(a => a.UserName)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder.Entity<ApplicationUser>()
+                .Property(x => x.Email)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            //builder.Entity<Dealer>()
+            //    .HasOne(d => d.User)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.UserId)
+
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new CityConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new DealerConfiguration());
+            builder.ApplyConfiguration(new DealershipConfiguration());
+
+
+            builder.ApplyConfiguration(new CarConfiguration());
+            builder.ApplyConfiguration(new ReservationPeriodConfiguration());
+            builder.ApplyConfiguration(new ReservationConfiguration());
+
+
+
+
+            base.OnModelCreating(builder);
+        }
+
         public DbSet<Car> Cars { get; set; }
 
         public DbSet<Category> Categories { get; set; }
@@ -27,36 +64,6 @@ namespace AutomotiveHub.Data
 
         public DbSet<ReservationPeriod> ReservationPeriods { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<ApplicationUser>()
-                .Property(a => a.UserName)
-                .HasMaxLength(50)
-                .IsRequired();
-
-            builder.Entity<ApplicationUser>()
-                .Property(x => x.Email)
-                .HasMaxLength(20)
-                .IsRequired();
-
-            builder.Entity<ApplicationUser>()
-                .Property(a => a.PhoneNumber)
-                .HasMaxLength(30)
-                .IsRequired();
-
-            builder.ApplyConfiguration(new CarConfiguration());
-            builder.ApplyConfiguration(new CategoryConfiguration());
-            builder.ApplyConfiguration(new CityConfiguration());
-            builder.ApplyConfiguration(new DealerConfiguration());
-            builder.ApplyConfiguration(new DealershipConfiguration());
-            builder.ApplyConfiguration(new ReservationConfiguration());
-            builder.ApplyConfiguration(new ReservationPeriodConfiguration());
-            builder.ApplyConfiguration(new UserConfiguration());
-
-
-
-            base.OnModelCreating(builder);
-        }
 
 
     }

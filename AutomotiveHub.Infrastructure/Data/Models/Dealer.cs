@@ -23,9 +23,10 @@ namespace AutomotiveHub.Infrastructure.Data.Models
 
         [Required]
         [Comment("User identifier")]
+        [ForeignKey(nameof(User))]
         public string UserId { get; set; } = string.Empty;
 
-        [ForeignKey(nameof(UserId))]
+      
         public ApplicationUser User { get; set; } = null!;
 
         public IEnumerable<Car> Cars { get; set; } = new List<Car>();

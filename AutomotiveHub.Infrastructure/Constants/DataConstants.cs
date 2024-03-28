@@ -12,7 +12,7 @@
         public const int CarKilometersMaxValue = 250000;
 
         public const int CarDescriptionMinLength = 10;
-        public const int CarDescriptionMaxLength = 100;
+        public const int CarDescriptionMaxLength = 500;
 
         public const int CarImageUrlMinLength = 5;
         public const int CarImageUrlMaxLength = 500;

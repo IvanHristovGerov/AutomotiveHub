@@ -25,7 +25,7 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
                     Id=1,
                     Name="Luxury Motors",
                     PhoneNumber ="+359888321456",
-                    UserId = "e243a13e-a16b-4d10-a2eb-789c1c3d4413"
+                    UserId = "8cb5bcce-a58e-4271-9a58-13811fc3c9e3"
                 },
                 new Dealer()
                 {
@@ -39,7 +39,7 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
                     Id=3,
                     Name="Fast Lane Autos",
                     PhoneNumber="+359878931336",
-                    UserId = "5af45714-a89d-4aaa-90ed-fe41a9ab1966"
+                    UserId = "0e1bd4e6-ab89-4490-a276-87c350e034dd"
                 }
 
             };

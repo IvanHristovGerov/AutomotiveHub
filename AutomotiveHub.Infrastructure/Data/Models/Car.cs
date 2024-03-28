@@ -53,27 +53,28 @@ namespace AutomotiveHub.Infrastructure.Data.Models
         [Comment("Image URL")]
         public string ImageUrl { get; set; } = string.Empty;
 
+
+
         [Required]
         [Comment("Category identifier")]
+        [ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
-
-        [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; } = null!;
 
 
         [Required]
         [Comment("Dealer identifier")]
+        [ForeignKey(nameof(Dealer))]
         public int DealerId { get; set; }
-
-        [ForeignKey(nameof(DealerId))]
         public Dealer Dealer { get; set; } = null!;
 
 
         [Comment("User Id of the renterer")]
+        [ForeignKey(nameof(Renter))]
         public string? RenterId { get; set; }
-
-        [ForeignKey(nameof(RenterId))]
         public ApplicationUser? Renter { get; set; }
+
+        public bool IsActive { get; set; } = true;
 
 
 

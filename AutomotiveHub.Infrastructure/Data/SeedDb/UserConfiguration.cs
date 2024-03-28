@@ -12,7 +12,7 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
 {
     internal class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
-       
+
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             builder.HasData(CreateUsers());
@@ -35,6 +35,20 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
             };
 
             user.PasswordHash = passHasher.HashPassword(user, "gerov333");
+            users.Add(user);
+
+            user = new ApplicationUser()
+            {
+                Id = "0e1bd4e6-ab89-4490-a276-87c350e034dd",
+                UserName = "Admin",
+                NormalizedUserName = "ADMIN",
+                Email = "admindealer@gmail.com",
+                NormalizedEmail = "ADMINDEALER@GMAIL.COM",
+                FullName = "Administrator",
+                IsActive = true
+            };
+
+            user.PasswordHash = passHasher.HashPassword(user, "admin333");
             users.Add(user);
 
             return users;

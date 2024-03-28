@@ -1,4 +1,5 @@
 using AutomotiveHub.Data;
+using AutomotiveHub.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,8 +11,9 @@ builder.Services.AddDbContext<AutomotiveHubDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<AutomotiveHubDbContext>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

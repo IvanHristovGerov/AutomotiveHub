@@ -23,7 +23,7 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
                     Model = "RS6",
                     Year = 2023,
                     Kilometers = 4500,
-                    Description = "4.0-litre twin-turbo V8 with bigger turbochargers, modified ECU for a total of 768bhp. This high performance Audi transformed by Mansory is the unforgettable weekend escape.",
+                    Description = "4.0l twin-turbo V8 with bigger turbochargers, modified ECU for a total of 768bhp. This high performance Audi transformed by Mansory is the unforgettable weekend escape.",
                     Transmission = Transmission.Automatic,
                     Fuel = Fuel.Petrol,
                     PricePerDay = 399,

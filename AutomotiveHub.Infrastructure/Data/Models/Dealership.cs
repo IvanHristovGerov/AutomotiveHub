@@ -30,7 +30,7 @@ namespace AutomotiveHub.Infrastructure.Data.Models
         [Required]
         public int DealerId { get; set; }
 
-        [ForeignKey(nameof(DealerId))]
+        
         public Dealer Dealer { get; set; } = null!;
     }
 }

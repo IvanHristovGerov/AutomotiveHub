@@ -13,7 +13,7 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
     {
         public void Configure(EntityTypeBuilder<ReservationPeriod> builder)
         {
-            builder.HasData(CreateReservationPeriods())
+            builder.HasData(CreateReservationPeriods());
         }
 
         private List<ReservationPeriod> CreateReservationPeriods()

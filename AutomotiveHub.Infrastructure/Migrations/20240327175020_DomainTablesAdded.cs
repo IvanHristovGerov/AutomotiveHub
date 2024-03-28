@@ -3,39 +3,19 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AutomotiveHub.Data.Migrations
+namespace AutomotiveHub.Infrastructure.Migrations
 {
     public partial class DomainTablesAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Discriminator",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "FullName",
-                table: "AspNetUsers",
-                type: "nvarchar(50)",
-                maxLength: 50,
-                nullable: true);
-
-            migrationBuilder.AddColumn<bool>(
-                name: "IsActive",
-                table: "AspNetUsers",
-                type: "bit",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Category identifier")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Category's name")
+                    Name = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false, comment: "Category's name")
                 },
                 constraints: table =>
                 {
@@ -99,14 +79,15 @@ namespace AutomotiveHub.Data.Migrations
                     Model = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Model name"),
                     Year = table.Column<int>(type: "int", nullable: false, comment: "Year of production"),
                     Kilometers = table.Column<int>(type: "int", maxLength: 250000, nullable: false, comment: "Car's mileage"),
-                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Car's description"),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false, comment: "Car's description"),
                     Transmission = table.Column<int>(type: "int", nullable: false, comment: "Transmission type"),
                     Fuel = table.Column<int>(type: "int", nullable: false, comment: "Fuel type"),
                     PricePerDay = table.Column<int>(type: "int", nullable: false, comment: "Price per day"),
                     ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false, comment: "Image URL"),
                     CategoryId = table.Column<int>(type: "int", nullable: false, comment: "Category identifier"),
                     DealerId = table.Column<int>(type: "int", nullable: false, comment: "Dealer identifier"),
-                    RenterId = table.Column<string>(type: "nvarchar(450)", nullable: true, comment: "User Id of the renterer")
+                    RenterId = table.Column<string>(type: "nvarchar(450)", nullable: true, comment: "User Id of the renterer"),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -251,18 +232,6 @@ namespace AutomotiveHub.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Dealers");
-
-            migrationBuilder.DropColumn(
-                name: "Discriminator",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "FullName",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "IsActive",
-                table: "AspNetUsers");
         }
     }
 }
