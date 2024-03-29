@@ -10,7 +10,7 @@ namespace AutomotiveHub.Core.Models
 {
     public class CarsQueryModel
     {
-        public int CarsPerPage { get; } = 3;
+        public int CarsPerPage { get; } = 6;
 
         public string Category { get; set; } = string.Empty;
 

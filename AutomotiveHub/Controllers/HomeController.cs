@@ -1,4 +1,5 @@
-﻿using AutomotiveHub.Models;
+﻿using AutomotiveHub.Core.Contracts;
+using AutomotiveHub.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +8,17 @@ namespace AutomotiveHub.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ICarService carService;
+        public HomeController(ILogger<HomeController> logger, ICarService _carService)
         {
             _logger = logger;
+            carService = _carService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var model = await carService.AllCarsAsync();
+            return View(model);
         }
 
         public IActionResult Privacy()

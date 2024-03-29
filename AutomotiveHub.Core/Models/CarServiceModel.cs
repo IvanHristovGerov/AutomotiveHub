@@ -23,6 +23,9 @@ namespace AutomotiveHub.Core.Models
         [DisplayName("Price per day")]
         public int PricePerDay { get; set; }
 
+        [StringLength(CarDescriptionMaxLength, MinimumLength = CarDescriptionMinLength, ErrorMessage = LengthMessage)]
+        public string Description { get; set; } = string.Empty;
+
         [Required(ErrorMessage = RequireMessage)]
         [DisplayName("Image URL")]
         public string ImageUrl { get; set; } = string.Empty;

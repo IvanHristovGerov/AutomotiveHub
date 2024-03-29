@@ -2,7 +2,92 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="~/css/site.css">
+
+</head>
+
+<body>
+
+    @{
+        ViewData["Title"] = "Home Page";
+    }
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewData["Title"]</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="~/css/site.css">
+
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+            <div class="jumbotron jumbotron-fluid text-white bg-dark">
+                <div class="container text-center">
+                    <h1 class="display-3">Experience the Thrill of Luxury Sports Cars</h1>
+                    <p class="lead">Rent Your Dream Ride Today</p>
+                    <a class="btn btn-primary btn-lg" href="@Url.Action("All", "Car")" role="button">Explore Our Fleet</a>
+                </div>
+            </div>
+
+            <div id="services" class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <img src="https://c4.wallpaperflare.com/wallpaper/177/717/220/audi-porsche-gt3-rs6-hd-wallpaper-preview.jpg"
+                             class="img-fluid" alt="Audi Porsche GT3 RS6"> <!-- Use img-fluid to make the image responsive -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Unlock your Dream Ride!</h5>
+                                <div class="container">
+                                    <p>Welcome to Automotive Hub, your ultimate destination for luxury car rentals. At Automotive Hub, we offer a premier selection of high-performance sports cars, providing you with the opportunity to experience the thrill of driving your dream car. Whether it's a sleek Audi, a powerful Porsche, or an exotic Ferrari, we have the perfect vehicle to elevate your driving experience. Explore our fleet today and embark on an unforgettable journey behind the wheel of your dream ride.</p>
+                                </div>
+
+                                <p class="card-text">Experience the epitome of performance with specially selected </p>
+                                <a href="#" class="btn btn-primary">Rent Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer bg-dark text-white text-center py-3">
+                <div class="container">
+                    <span>&copy; 2024 Luxury Car Rental</span>
+                </div>
+            </footer>
+        </div>
+
+    </body>
+</body>
+
+</html>
+
+
+
+
+

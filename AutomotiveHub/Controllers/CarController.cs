@@ -22,22 +22,22 @@ namespace AutomotiveHub.Controllers
         //1
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> All([FromQuery]CarsQueryModel query)
+        public async Task<IActionResult> All([FromQuery]CarsQueryModel model)
         {
-            var model = await carService.AllAsync(
-                query.Category,
-                query.SearchQuery,
-                query.Sorting,
-                query.CurrentPage,
-                query.CarsPerPage
+            var query = await carService.AllAsync(
+                model.Category,
+                model.SearchQuery,
+                model.Sorting,
+                model.CurrentPage,
+                model.CarsPerPage
                 );
 
-            query.TotalCarsCount = model.TotalCarsCount;
-            query.Cars = model.Cars;
+            model.TotalCarsCount = query.TotalCarsCount;
+            model.Cars = query.Cars;
 
-            query.Categories= await carService.AllCategoriesNamesAsync();
+            model.Categories= await carService.AllCategoriesNamesAsync();
 
-            return View(query);
+            return View(model);
         }
     }
 }
