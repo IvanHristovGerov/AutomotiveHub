@@ -1,7 +1,7 @@
 ﻿using AutomotiveHub.Core.Contracts;
 using AutomotiveHub.Core.Enumerations;
 using AutomotiveHub.Core.Extension;
-using AutomotiveHub.Core.Models;
+using AutomotiveHub.Core.Models.Cars;
 using AutomotiveHub.Infrastructure.Data.Models;
 using AutomotiveHub.Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;

@@ -1,5 +1,5 @@
 ﻿using AutomotiveHub.Core.Enumerations;
-using AutomotiveHub.Core.Models;
+using AutomotiveHub.Core.Models.Cars;
 using System;
 using System.Collections.Generic;
 using System.Linq;

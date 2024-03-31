@@ -1,4 +1,4 @@
-﻿using AutomotiveHub.Core.Models;
+﻿using AutomotiveHub.Core.Models.Cars;
 using AutomotiveHub.Infrastructure.Data.Models;
 using System;
 using System.Collections.Generic;

@@ -16,3 +16,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.card-body {
+    border: 2px solid #343a40;
+    border-radius: 10px;
+    padding: 20px;
+}
+

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutomotiveHub.Core.Models
+namespace AutomotiveHub.Core.Models.Cars
 {
     public class CarQueryServiceModel
     {

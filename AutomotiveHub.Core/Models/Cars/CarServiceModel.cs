@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using static AutomotiveHub.Core.Constants.MessageConstants;
 using static AutomotiveHub.Infrastructure.Constants.DataConstants;
 
-namespace AutomotiveHub.Core.Models
+namespace AutomotiveHub.Core.Models.Cars
 {
     public class CarServiceModel : ICarServiceModel
     {

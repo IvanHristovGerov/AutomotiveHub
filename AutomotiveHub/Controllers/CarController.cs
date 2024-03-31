@@ -1,5 +1,5 @@
 ﻿using AutomotiveHub.Core.Contracts;
-using AutomotiveHub.Core.Models;
+using AutomotiveHub.Core.Models.Cars;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
