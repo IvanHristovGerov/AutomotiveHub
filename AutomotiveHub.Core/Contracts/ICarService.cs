@@ -21,6 +21,9 @@ namespace AutomotiveHub.Core.Contracts
 
         Task<IEnumerable<string>> AllCategoriesNamesAsync();
 
+        Task<IEnumerable<CarServiceModel>> AllCarsByUserId(string userId);
+        Task<IEnumerable<CarServiceModel>> AllCarsByDealerId(int dealerId);
+
 
     }
 }

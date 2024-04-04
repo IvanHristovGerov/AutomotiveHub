@@ -26,8 +26,8 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
             var user = new ApplicationUser()
             {
                 Id = "8cb5bcce-a58e-4271-9a58-13811fc3c9e3",
-                UserName = "IvanGerov",
-                NormalizedUserName = "IVANGEROV",
+                UserName = "ivangerov@gmail.com",
+                NormalizedUserName = "IVANGEROV@GMAIL.COM",
                 Email = "ivangerov@gmail.com",
                 NormalizedEmail = "IVANGEROV@GMAIL.COM",
                 FirstName = "UserIvan",
@@ -56,8 +56,8 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
             user = new ApplicationUser()
             {
                 Id = "1b151ae1-d290-44d5-8461-af3d415f9432",
-                UserName = "AdminTest",
-                NormalizedUserName = "ADMINTEST",
+                UserName = "admintest@gmail.com",
+                NormalizedUserName = "ADMINTEST@GMAIL.COM",
                 Email = "admintest@gmail.com",
                 NormalizedEmail = "ADMINTEST@GMAIL.COM",
                 FirstName = "Admin",

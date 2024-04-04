@@ -11,5 +11,9 @@ namespace AutomotiveHub.Core.Constants
         public const string RequireMessage = "The field is required";
 
         public const string LengthMessage = "The field {0} must be between {2} and {1} characters";
+
+        public const string DealerMessage = "You are already a dealer!";
+
+        public const string DealerPhoneExists = "This phone number is already added!";
     }
 }

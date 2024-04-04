@@ -99,5 +99,24 @@ namespace AutomotiveHub.Core.Services
                 .ToListAsync();
                 
         }
+
+        public async Task<IEnumerable<CarServiceModel>> AllCarsByUserId(string userId)
+        {
+            return await repository
+                .All<Car>()
+                .Where(c => c.RenterId == userId)
+                .ProjectToCarServiceModel()
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<CarServiceModel>> AllCarsByDealerId(int dealerId)
+        {
+            return await repository
+                .All<Car>()
+                .Where(c => c.IsActive == true)
+                .Where(c => c.DealerId == dealerId)
+                .ProjectToCarServiceModel()
+                .ToListAsync();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutomotiveHub.Core.Contracts;
 using AutomotiveHub.Core.Models.Cars;
+using AutomotiveHub.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,27 @@ namespace AutomotiveHub.Controllers
             model.Cars = query.Cars;
 
             model.Categories= await carService.AllCategoriesNamesAsync();
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Mine()
+        {
+            var userId = User.Id();
+
+            IEnumerable<CarServiceModel> model;
+
+            if (await dealerService.ExistsByIdAsync(userId))
+            {
+                var dealerId = await dealerService.GetDealerId(userId);
+
+                model = await carService.AllCarsByDealerId(dealerId);
+            }
+            else
+            {
+                model = await carService.AllCarsByUserId(userId);
+            }
 
             return View(model);
         }
