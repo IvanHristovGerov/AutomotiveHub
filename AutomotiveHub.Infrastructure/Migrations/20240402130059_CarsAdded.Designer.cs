@@ -4,6 +4,7 @@ using AutomotiveHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutomotiveHub.Infrastructure.Migrations
 {
     [DbContext(typeof(AutomotiveHubDbContext))]
-    partial class AutomotiveHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240402130059_CarsAdded")]
+    partial class CarsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,7 +109,7 @@ namespace AutomotiveHub.Infrastructure.Migrations
                             Id = 1,
                             Brand = "Audi",
                             CategoryId = 1,
-                            DealerId = 4,
+                            DealerId = 3,
                             Description = "4.0l twin-turbo V8 with bigger turbochargers, modified ECU for a total of 768bhp. This high performance Audi transformed by Mansory is the unforgettable weekend escape.",
                             Fuel = 1,
                             ImageUrl = "https://www.topgear.com/sites/default/files/2021/10/904263.jpg?w=892&h=502",
@@ -139,7 +141,7 @@ namespace AutomotiveHub.Infrastructure.Migrations
                             Id = 3,
                             Brand = "Porshe",
                             CategoryId = 5,
-                            DealerId = 4,
+                            DealerId = 3,
                             Description = "You need a track car for the streets? This stylish sport car is for you.",
                             Fuel = 1,
                             ImageUrl = "https://www.topgear.com/sites/default/files/cars-car/carousel/2020/12/pcgb20_0589_fine.jpg?w=892&h=502",
@@ -155,7 +157,7 @@ namespace AutomotiveHub.Infrastructure.Migrations
                             Id = 4,
                             Brand = "Volkswagen",
                             CategoryId = 3,
-                            DealerId = 4,
+                            DealerId = 2,
                             Description = "3.0-litre V6 Diesel with 282bhp.It's more than capable of holding its own on the road, now in utter refinement, and it’s highly impressive off the beaten track too. ",
                             Fuel = 0,
                             ImageUrl = "https://www.topgear.com/sites/default/files/2023/11/Medium-36020-TouaregElegance.jpg?w=892&h=502",
@@ -187,7 +189,7 @@ namespace AutomotiveHub.Infrastructure.Migrations
                             Id = 7,
                             Brand = "Audi",
                             CategoryId = 3,
-                            DealerId = 1,
+                            DealerId = 2,
                             Description = "350bhp with a battery-89kWh for a range up to 460km.",
                             Fuel = 3,
                             ImageUrl = "https://www.topgear.com/sites/default/files/2024/03/32673-Q8ETRONDEANSMITH07.jpg?w=892&h=502",
@@ -203,7 +205,7 @@ namespace AutomotiveHub.Infrastructure.Migrations
                             Id = 8,
                             Brand = "Toyota",
                             CategoryId = 3,
-                            DealerId = 1,
+                            DealerId = 2,
                             Description = "If you need practical and useful SUV this is the one.It has 2.5-litre four-cylinder engine good for about 203hp.",
                             Fuel = 0,
                             ImageUrl = "https://www.topgear.com/sites/default/files/2024/02/15%20Toyota%20RAV4%20US%20review%202024.jpg?w=892&h=502",
@@ -352,14 +354,21 @@ namespace AutomotiveHub.Infrastructure.Migrations
                         {
                             Id = 1,
                             Name = "Luxury Motors",
-                            PhoneNumber = "+35988832145",
+                            PhoneNumber = "+359888321456",
                             UserId = "8cb5bcce-a58e-4271-9a58-13811fc3c9e3"
                         },
                         new
                         {
-                            Id = 4,
-                            Name = "Prestige Rents",
+                            Id = 2,
+                            Name = "Prestige Rentals",
                             PhoneNumber = "+359894333878",
+                            UserId = "0e1bd4e6-ab89-4490-a276-87c350e034dd"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Fast Lane Autos",
+                            PhoneNumber = "+359878931336",
                             UserId = "0e1bd4e6-ab89-4490-a276-87c350e034dd"
                         });
                 });
@@ -469,10 +478,10 @@ namespace AutomotiveHub.Infrastructure.Migrations
                         {
                             Id = 1,
                             CarId = 2,
-                            EndDate = new DateTime(2024, 4, 7, 15, 53, 22, 73, DateTimeKind.Local).AddTicks(5511),
+                            EndDate = new DateTime(2024, 4, 5, 16, 0, 57, 965, DateTimeKind.Local).AddTicks(1568),
                             IsActive = false,
                             ReservationPeriodId = 2,
-                            StartDate = new DateTime(2024, 4, 4, 15, 53, 22, 73, DateTimeKind.Local).AddTicks(5466),
+                            StartDate = new DateTime(2024, 4, 2, 16, 0, 57, 965, DateTimeKind.Local).AddTicks(1514),
                             TotalPrice = 1397
                         });
                 });
@@ -761,15 +770,15 @@ namespace AutomotiveHub.Infrastructure.Migrations
                         {
                             Id = "8cb5bcce-a58e-4271-9a58-13811fc3c9e3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "021116f7-b817-4403-b844-1aec00093f0a",
+                            ConcurrencyStamp = "a72add7e-7495-4f86-8186-9658e83d01a6",
                             Email = "ivangerov@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "IVANGEROV@GMAIL.COM",
                             NormalizedUserName = "IVANGEROV",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPArEvaPPHH0lvl0CeDExQncQPHhjNp/etLkX3T8aMuDJj9237fgpxESpG4TBzurCQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMTyfSkSszJ5zf6qaHJyGZdVbb6DAghUyh0I9oudvSDh7mEErH5gt0Lp7B9btGuFRg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0ebda638-273c-4cbb-9f32-11a8f6707999",
+                            SecurityStamp = "e68c8948-d1bc-435b-bab4-76c8aeaf3874",
                             TwoFactorEnabled = false,
                             UserName = "IvanGerov",
                             FirstName = "UserIvan",
@@ -778,36 +787,17 @@ namespace AutomotiveHub.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = "0e1bd4e6-ab89-4490-a276-87c350e034dd",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "7306fafc-088e-4295-abb1-e9d5aeb1fbf1",
-                            Email = "admindealer@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMINDEALER@GMAIL.COM",
-                            NormalizedUserName = "ADMINDEALER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHEg52huXVY/JgiukoOiq29U9byJ9eRZfTzsqATVLF1PGFbVCehMfzSf7EVSQJmlcA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "ad4e665e-3d44-4f9f-8c39-e46cef4d9262",
-                            TwoFactorEnabled = false,
-                            UserName = "admindealer@gmail.com",
-                            FirstName = "Ivan",
-                            IsActive = true,
-                            LastName = "Gerov"
-                        },
-                        new
-                        {
                             Id = "1b151ae1-d290-44d5-8461-af3d415f9432",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "94f184dc-c192-4a38-823f-49f7f36e5571",
+                            ConcurrencyStamp = "a3cb7834-38ac-4bed-8ee3-108fceb7691a",
                             Email = "admintest@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINTEST@GMAIL.COM",
                             NormalizedUserName = "ADMINTEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL9cxJeLVi50TGtRHpEqw5YrT9zKt8FltWxc0IiFcw1/1JryKrr/SwXi2dKTBOoVaA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELbbhkqdu+ZU0Hm2TKYHPGUdsojrHJdpK2ztCC95iPkiWuUwFB6bcAAp5muDKN/cDQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "38942bdf-6915-4fda-b4d0-81e5e2103f20",
+                            SecurityStamp = "4736dc4d-1072-4c17-9095-828988ac32cc",
                             TwoFactorEnabled = false,
                             UserName = "AdminTest",
                             FirstName = "Admin",

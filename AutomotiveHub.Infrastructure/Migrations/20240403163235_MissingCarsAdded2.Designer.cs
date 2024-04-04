@@ -4,6 +4,7 @@ using AutomotiveHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutomotiveHub.Infrastructure.Migrations
 {
     [DbContext(typeof(AutomotiveHubDbContext))]
-    partial class AutomotiveHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240403163235_MissingCarsAdded2")]
+    partial class MissingCarsAdded2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,7 +189,7 @@ namespace AutomotiveHub.Infrastructure.Migrations
                             Id = 7,
                             Brand = "Audi",
                             CategoryId = 3,
-                            DealerId = 1,
+                            DealerId = 4,
                             Description = "350bhp with a battery-89kWh for a range up to 460km.",
                             Fuel = 3,
                             ImageUrl = "https://www.topgear.com/sites/default/files/2024/03/32673-Q8ETRONDEANSMITH07.jpg?w=892&h=502",
@@ -203,7 +205,7 @@ namespace AutomotiveHub.Infrastructure.Migrations
                             Id = 8,
                             Brand = "Toyota",
                             CategoryId = 3,
-                            DealerId = 1,
+                            DealerId = 4,
                             Description = "If you need practical and useful SUV this is the one.It has 2.5-litre four-cylinder engine good for about 203hp.",
                             Fuel = 0,
                             ImageUrl = "https://www.topgear.com/sites/default/files/2024/02/15%20Toyota%20RAV4%20US%20review%202024.jpg?w=892&h=502",
@@ -469,10 +471,10 @@ namespace AutomotiveHub.Infrastructure.Migrations
                         {
                             Id = 1,
                             CarId = 2,
-                            EndDate = new DateTime(2024, 4, 7, 15, 53, 22, 73, DateTimeKind.Local).AddTicks(5511),
+                            EndDate = new DateTime(2024, 4, 6, 19, 32, 33, 824, DateTimeKind.Local).AddTicks(9795),
                             IsActive = false,
                             ReservationPeriodId = 2,
-                            StartDate = new DateTime(2024, 4, 4, 15, 53, 22, 73, DateTimeKind.Local).AddTicks(5466),
+                            StartDate = new DateTime(2024, 4, 3, 19, 32, 33, 824, DateTimeKind.Local).AddTicks(9755),
                             TotalPrice = 1397
                         });
                 });
@@ -761,15 +763,15 @@ namespace AutomotiveHub.Infrastructure.Migrations
                         {
                             Id = "8cb5bcce-a58e-4271-9a58-13811fc3c9e3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "021116f7-b817-4403-b844-1aec00093f0a",
+                            ConcurrencyStamp = "2fba7145-bb59-4944-b8ff-a41115fa92bf",
                             Email = "ivangerov@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "IVANGEROV@GMAIL.COM",
                             NormalizedUserName = "IVANGEROV",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPArEvaPPHH0lvl0CeDExQncQPHhjNp/etLkX3T8aMuDJj9237fgpxESpG4TBzurCQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHDsYWFzqxbbxQ582kPquyndJ7QHCs1WuMGi9Mo4KSTBS9ASO/e2Id0m2+Rjhx/UnQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0ebda638-273c-4cbb-9f32-11a8f6707999",
+                            SecurityStamp = "b5e12c1a-43d1-4f38-a13a-57ec0817d149",
                             TwoFactorEnabled = false,
                             UserName = "IvanGerov",
                             FirstName = "UserIvan",
@@ -780,17 +782,17 @@ namespace AutomotiveHub.Infrastructure.Migrations
                         {
                             Id = "0e1bd4e6-ab89-4490-a276-87c350e034dd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7306fafc-088e-4295-abb1-e9d5aeb1fbf1",
+                            ConcurrencyStamp = "e3a4d43c-74f6-4b11-a989-8f596ef19233",
                             Email = "admindealer@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINDEALER@GMAIL.COM",
-                            NormalizedUserName = "ADMINDEALER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHEg52huXVY/JgiukoOiq29U9byJ9eRZfTzsqATVLF1PGFbVCehMfzSf7EVSQJmlcA==",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAELMlJ8jG6QsOoXE8APYRiWNQTaYkSyBf46X26W8SiHEtrMFIiWcuaqFw9vacYAOnNg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ad4e665e-3d44-4f9f-8c39-e46cef4d9262",
+                            SecurityStamp = "b9fe31d6-2fec-4278-bd3f-7347362990f7",
                             TwoFactorEnabled = false,
-                            UserName = "admindealer@gmail.com",
+                            UserName = "Admin",
                             FirstName = "Ivan",
                             IsActive = true,
                             LastName = "Gerov"
@@ -799,15 +801,15 @@ namespace AutomotiveHub.Infrastructure.Migrations
                         {
                             Id = "1b151ae1-d290-44d5-8461-af3d415f9432",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "94f184dc-c192-4a38-823f-49f7f36e5571",
+                            ConcurrencyStamp = "20afba5c-1d12-4328-a29a-64c165175678",
                             Email = "admintest@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINTEST@GMAIL.COM",
                             NormalizedUserName = "ADMINTEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL9cxJeLVi50TGtRHpEqw5YrT9zKt8FltWxc0IiFcw1/1JryKrr/SwXi2dKTBOoVaA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMqX/13Qn6NeUDsmu0NAMTaQhhuptPGLfqDfRaDkb1WV7G0CD8XGBWMT0LSLsSiA5w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "38942bdf-6915-4fda-b4d0-81e5e2103f20",
+                            SecurityStamp = "da65a66a-ec06-4222-aa93-38ebc7f1e7c7",
                             TwoFactorEnabled = false,
                             UserName = "AdminTest",
                             FirstName = "Admin",

@@ -38,8 +38,6 @@ namespace AutomotiveHub.Data
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new DealerConfiguration());
             builder.ApplyConfiguration(new DealershipConfiguration());
-
-
             builder.ApplyConfiguration(new CarConfiguration());
             builder.ApplyConfiguration(new ReservationPeriodConfiguration());
             builder.ApplyConfiguration(new ReservationConfiguration());

@@ -30,7 +30,8 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
                 NormalizedUserName = "IVANGEROV",
                 Email = "ivangerov@gmail.com",
                 NormalizedEmail = "IVANGEROV@GMAIL.COM",
-                FullName = "Ivan Gerov",
+                FirstName = "UserIvan",
+                LastName = "UserGerov",
                 IsActive = true
             };
 
@@ -40,15 +41,31 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
             user = new ApplicationUser()
             {
                 Id = "0e1bd4e6-ab89-4490-a276-87c350e034dd",
-                UserName = "Admin",
-                NormalizedUserName = "ADMIN",
+                UserName = "admindealer@gmail.com",
+                NormalizedUserName = "ADMINDEALER@GMAIL.COM",
                 Email = "admindealer@gmail.com",
                 NormalizedEmail = "ADMINDEALER@GMAIL.COM",
-                FullName = "Administrator",
+                FirstName = "Ivan",
+                LastName = "Gerov",
                 IsActive = true
             };
 
             user.PasswordHash = passHasher.HashPassword(user, "admin333");
+            users.Add(user);
+
+            user = new ApplicationUser()
+            {
+                Id = "1b151ae1-d290-44d5-8461-af3d415f9432",
+                UserName = "AdminTest",
+                NormalizedUserName = "ADMINTEST",
+                Email = "admintest@gmail.com",
+                NormalizedEmail = "ADMINTEST@GMAIL.COM",
+                FirstName = "Admin",
+                LastName = "Test",
+                IsActive = true
+            };
+
+            user.PasswordHash = passHasher.HashPassword(user, "admintest333");
             users.Add(user);
 
             return users;

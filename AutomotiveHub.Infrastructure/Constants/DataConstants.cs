@@ -38,5 +38,12 @@
 
         public const int DealershipAddressMinLength = 10;
         public const int DealershipAddressMaxLength = 100;
+
+        //User
+        public const int UserFirstNameMaxLength = 50;
+        public const int UserFirstNameMinLength = 1;
+
+        public const int UserLastNameMaxLength = 50;
+        public const int UserLastNameMinLength = 1;
     }
 }

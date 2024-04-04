@@ -24,23 +24,23 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
                 {
                     Id=1,
                     Name="Luxury Motors",
-                    PhoneNumber ="+359888321456",
+                    PhoneNumber ="+35988832145",
                     UserId = "8cb5bcce-a58e-4271-9a58-13811fc3c9e3"
                 },
                 new Dealer()
                 {
-                    Id=2,
-                    Name="Prestige Rentals",
+                    Id=4,
+                    Name="Prestige Rents",
                     PhoneNumber="+359894333878",
                     UserId = "0e1bd4e6-ab89-4490-a276-87c350e034dd"
                 },
-                new Dealer()
-                {
-                    Id=3,
-                    Name="Fast Lane Autos",
-                    PhoneNumber="+359878931336",
-                    UserId = "0e1bd4e6-ab89-4490-a276-87c350e034dd"
-                }
+                //new Dealer()
+                //{
+                //    Id=3,
+                //    Name="Fast Lane Autos",
+                //    PhoneNumber="+359878931334",
+                //    UserId = "0e1bd4e6-ab89-4490-a276-87c350e034dd"
+                //}
 
             };
         }
