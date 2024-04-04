@@ -24,6 +24,10 @@ namespace AutomotiveHub.Core.Contracts
         Task<IEnumerable<CarServiceModel>> AllCarsByUserId(string userId);
         Task<IEnumerable<CarServiceModel>> AllCarsByDealerId(int dealerId);
 
+        Task<bool> ExistsAsync(int carId);
+
+        Task<CarDetailsServiceModel> GetCarsDetailsIdAsync(int carId);   
+
 
     }
 }

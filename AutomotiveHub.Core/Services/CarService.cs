@@ -97,7 +97,7 @@ namespace AutomotiveHub.Core.Services
                 .Select(c => c.Name)
                 .Distinct()
                 .ToListAsync();
-                
+
         }
 
         public async Task<IEnumerable<CarServiceModel>> AllCarsByUserId(string userId)
@@ -117,6 +117,50 @@ namespace AutomotiveHub.Core.Services
                 .Where(c => c.DealerId == dealerId)
                 .ProjectToCarServiceModel()
                 .ToListAsync();
+        }
+
+        public async Task<bool> ExistsAsync(int carId)
+        {
+            return await repository.AllReadOnly<Car>()
+               .Where(c => c.IsActive == true)
+               .AnyAsync(c => c.Id == carId);
+        }
+
+        public async Task<CarDetailsServiceModel> GetCarsDetailsIdAsync(int carId)
+        {
+           
+            var car = await repository.AllReadOnly<Car>()
+                .Where(c => c.IsActive == true)
+                .Where(c => c.Id == carId)
+                .Select(c => new CarDetailsServiceModel()
+                {
+                    Id = c.Id,
+                    Brand = c.Brand,
+                    Year = c.Year,
+                    Model = c.Model,
+                    PricePerDay = c.PricePerDay,
+                    Description = c.Description,
+                    ImageUrl = c.ImageUrl,
+                    IsRented = c.RenterId != null,
+                    Fuel = c.Fuel,
+                    Category = c.Category.Name,
+                    Transmission = c.Transmission,
+                    Dealer = new Models.Dealer.DealerQueryModel()
+                    {
+                        Name = c.Dealer.Name,
+                        Email = c.Dealer.User.Email,
+                        PhoneNumber = c.Dealer.PhoneNumber
+                    }
+
+                })
+                .FirstOrDefaultAsync();
+
+            if (car == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return car;
         }
     }
 }
