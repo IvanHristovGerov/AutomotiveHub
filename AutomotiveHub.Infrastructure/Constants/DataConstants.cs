@@ -39,12 +39,20 @@
         public const int DealershipAddressMinLength = 10;
         public const int DealershipAddressMaxLength = 100;
 
-        //User
+        
         public const int UserFirstNameMaxLength = 50;
         public const int UserFirstNameMinLength = 1;
 
         public const int UserLastNameMaxLength = 50;
         public const int UserLastNameMinLength = 1;
+
+        public const int CarYearMaxValue = 2024;
+        public const int CarYearMinValue = 1969;
+
+        public const int PricePerDayMaxValue = 2000;
+        public const int PricePerDayMinValue = 100;
+
+       
 
        
     }

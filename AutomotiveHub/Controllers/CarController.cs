@@ -5,6 +5,7 @@ using AutomotiveHub.Core.Models.Dealer;
 using AutomotiveHub.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static AutomotiveHub.Core.Constants.MessageConstants;
 
 namespace AutomotiveHub.Controllers
 {
@@ -25,7 +26,7 @@ namespace AutomotiveHub.Controllers
         //1
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> All([FromQuery]CarsQueryModel model)
+        public async Task<IActionResult> All([FromQuery] CarsQueryModel model)
         {
             var query = await carService.AllAsync(
                 model.Category,
@@ -38,7 +39,7 @@ namespace AutomotiveHub.Controllers
             model.TotalCarsCount = query.TotalCarsCount;
             model.Cars = query.Cars;
 
-            model.Categories= await carService.AllCategoriesNamesAsync();
+            model.Categories = await carService.AllCategoriesNamesAsync();
 
             return View(model);
         }
@@ -71,7 +72,7 @@ namespace AutomotiveHub.Controllers
             {
                 return BadRequest();
             }
-            
+
             var model = await carService.GetCarsDetailsIdAsync(id);
             var modelInfo = model.GetInformation();
 
@@ -81,6 +82,50 @@ namespace AutomotiveHub.Controllers
             }
 
             return View(model);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+            var model = new CarFormModel()
+            {
+                Categories = await carService.AllCategoriesAsync()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(CarFormModel carModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                carModel.Categories = await carService.AllCategoriesAsync();
+            }
+
+            if (await carService.CategoryExistAsync(carModel.CategoryId) == false)
+            {
+                ModelState.AddModelError(nameof(carModel.CategoryId), CategoryNotExists);
+            }
+
+            int dealerId = await dealerService.GetDealerId(User.Id());
+            int newCarId;
+
+            try
+            {
+                newCarId = await carService.CreateCarAsync(carModel, dealerId);
+            }
+            catch (Exception)
+            {
+
+                TempData[Error] = CouldNotCreateCar;
+                return View(carModel);
+            }
+
+            TempData[SuccessfulCreation] = SuccessfulCreation;
+
+            return RedirectToAction(nameof(Details), new { id = newCarId, information = carModel.GetInformation() });
         }
     }
 }

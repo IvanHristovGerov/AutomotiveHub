@@ -162,5 +162,48 @@ namespace AutomotiveHub.Core.Services
 
             return car;
         }
+
+        public async Task<IEnumerable<CarCategoryServiceModel>> AllCategoriesAsync()
+        {
+            return await repository.AllReadOnly<Category>()
+                .OrderBy(c => c.Id)
+                .Select(c => new CarCategoryServiceModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                })
+                .ToListAsync();
+        }
+
+        public async Task<bool> CategoryExistAsync(int categoryId)
+        {
+            return await repository.AllReadOnly<Category>()
+                .AnyAsync(c => c.Id == categoryId);
+        }
+
+       
+
+        public async Task<int> CreateCarAsync(CarFormModel model, int dealerId)
+        {
+            Car car = new Car()
+            {
+                Brand = model.Brand,
+                CategoryId = model.CategoryId,
+                Model = model.Model,
+                DealerId = dealerId,
+                Description = model.Description,
+                ImageUrl = model.ImageUrl,
+                PricePerDay = model.PricePerDay,
+                Fuel = model.Fuel,
+                Transmission = model.Transmission,
+                Year = model.Year
+            };
+
+            await repository.AddAsync(car);
+            await repository.SaveChangesAsync();
+
+            return car.Id;
+        }
+
     }
 }

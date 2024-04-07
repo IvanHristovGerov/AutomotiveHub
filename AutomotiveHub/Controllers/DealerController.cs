@@ -4,6 +4,7 @@ using AutomotiveHub.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using static AutomotiveHub.Core.Constants.MessageConstants;
 using static AutomotiveHub.Areas.Constants.UserConstants;
+using AutomotiveHub.Attributes;
 
 namespace AutomotiveHub.Controllers
 {
@@ -17,6 +18,7 @@ namespace AutomotiveHub.Controllers
         }
 
         [HttpGet]
+        [NotADealer]
         public async Task<IActionResult> Become()
         {
             if (await dealerService.ExistsByIdAsync(User.Id()))
@@ -29,6 +31,7 @@ namespace AutomotiveHub.Controllers
         }
 
         [HttpPost]
+        [NotADealer]
         public async Task<IActionResult> Become(BecomeDealerServiceModel model)
         {
             var userId = User.Id();
