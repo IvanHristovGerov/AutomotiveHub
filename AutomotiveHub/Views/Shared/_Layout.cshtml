@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/AutomotiveHub.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <header>   
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -58,14 +58,21 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer bg-dark text-white text-center py-0">
         <div class="container">
-            &copy; @DateTime.Today.Year - AutomotiveHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Today.Year - AutomotiveHub -
+            <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacy</a>
+            <span class="mx-2">|</span>
+            <a asp-area="" asp-controller="Home" asp-action="AboutUs" class="text-white">About Us</a>
+            <span class="mx-2">|</span>
+            <a asp-area="" asp-controller="Home" asp-action="Services" class="text-white">Services</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
 </body>
 </html>
