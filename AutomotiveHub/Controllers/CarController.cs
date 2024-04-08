@@ -132,7 +132,7 @@ namespace AutomotiveHub.Controllers
         [HttpPost]
         public async Task<IActionResult> Rent(int id)
         {
-            if (await carService.ExistsAsync(id)==false)
+            if (await carService.ExistsAsync(id) == false)
             {
                 return BadRequest();
             }
@@ -160,6 +160,28 @@ namespace AutomotiveHub.Controllers
             TempData[Success] = SuccessfulRent;
 
             return RedirectToAction(nameof(Mine));
+        }
+
+        public async Task<IActionResult> Leave(int id)
+        {
+            if (await carService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                await carService.LeaveAsync(id);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+
+                logger.LogError(ex, "CarController/Leave");
+
+                return Unauthorized();
+            }
+
+            return RedirectToAction(nameof(All));
         }
     }
 }

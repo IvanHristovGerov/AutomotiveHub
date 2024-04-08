@@ -266,5 +266,16 @@ namespace AutomotiveHub.Core.Services
 
             return true;
         }
+
+        public async Task LeaveAsync(int carId)
+        {
+            var car = await repository.GetByIdAsync<Car>(carId);
+
+            if (car != null)
+            {
+                car.RenterId = null;
+                await repository.SaveChangesAsync();
+            }
+        }
     }
 }

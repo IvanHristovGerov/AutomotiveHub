@@ -42,6 +42,8 @@ namespace AutomotiveHub.Core.Contracts
 
         Task<bool> HasDealerWithId(int carId, string currUserId);
 
+        Task LeaveAsync(int carId);
+
 
 
     }
