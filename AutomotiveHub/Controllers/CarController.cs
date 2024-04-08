@@ -4,6 +4,7 @@ using AutomotiveHub.Core.Models.Cars;
 using AutomotiveHub.Core.Models.Dealer;
 using AutomotiveHub.Extensions;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal;
 using Microsoft.AspNetCore.Mvc;
 using static AutomotiveHub.Core.Constants.MessageConstants;
 
@@ -123,9 +124,42 @@ namespace AutomotiveHub.Controllers
                 return View(carModel);
             }
 
-            TempData[SuccessfulCreation] = SuccessfulCreation;
+            TempData[Success] = SuccessfulCreation;
 
             return RedirectToAction(nameof(Details), new { id = newCarId, information = carModel.GetInformation() });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Rent(int id)
+        {
+            if (await carService.ExistsAsync(id)==false)
+            {
+                return BadRequest();
+            }
+
+            if (await dealerService.ExistsByIdAsync(User.Id()))
+            {
+                return Unauthorized();
+            }
+
+            if (await carService.IsRentedAsync(id))
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                await carService.Rent(id, User.Id());
+            }
+            catch (Exception)
+            {
+
+                TempData[Error] = CannotRent;
+                return RedirectToAction(nameof(All));
+            }
+            TempData[Success] = SuccessfulRent;
+
+            return RedirectToAction(nameof(Mine));
         }
     }
 }

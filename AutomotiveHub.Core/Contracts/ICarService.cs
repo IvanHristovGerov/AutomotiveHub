@@ -34,6 +34,14 @@ namespace AutomotiveHub.Core.Contracts
 
         Task<int> CreateCarAsync(CarFormModel model, int dealerId);
 
+        Task<bool> IsRentedAsync(int id);
+
+        Task<bool> IsRentedByUserId(int carId, string userId);
+
+        Task Rent(int carId, string userId);
+
+        Task<bool> HasDealerWithId(int carId, string currUserId);
+
 
 
     }

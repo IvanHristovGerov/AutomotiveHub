@@ -1,4 +1,5 @@
 ﻿@model CarDetailsServiceModel
+@inject IDealerService dealerService
 
 @{
     ViewBag.Title = "Car Details";
@@ -26,27 +27,13 @@
             <p>Category: <b>@Model.Category</b></p>
             <p><i>(@(Model.IsRented ? "Rented" : "Not Rented"))</i></p>
             <p></p>
-            @*<p>You can rent @Model.Brand @Model.Model for:</p>
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnratio1" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="btnradio1" onclick="RenderPrice1()">3 days</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnratio2" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio2">5 days</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnratio3" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio3">10 days</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnratio4" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio3">30 days</label>
-            </div>
-
-            <p>Price will be: RenderPrice() BGN</p>*@
+       
 
             <div class="form-inline">
                 @if (this.User.Identity.IsAuthenticated)
                 {
-                    @if (User.IsInRole(DealerRoleName))
+                    //dealer
+                    @if (await dealerService.ExistsByIdAsync(User.Id()))
                     {
                         <a class="btn btn-warning" asp-controller="Car" asp-action="Edit"
                    asp-route-id="@Model.Id">Edit</a>

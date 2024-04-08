@@ -128,7 +128,7 @@ namespace AutomotiveHub.Core.Services
 
         public async Task<CarDetailsServiceModel> GetCarsDetailsIdAsync(int carId)
         {
-           
+
             var car = await repository.AllReadOnly<Car>()
                 .Where(c => c.IsActive == true)
                 .Where(c => c.Id == carId)
@@ -181,7 +181,7 @@ namespace AutomotiveHub.Core.Services
                 .AnyAsync(c => c.Id == categoryId);
         }
 
-       
+
 
         public async Task<int> CreateCarAsync(CarFormModel model, int dealerId)
         {
@@ -205,5 +205,66 @@ namespace AutomotiveHub.Core.Services
             return car.Id;
         }
 
+        public async Task<bool> IsRentedAsync(int id)
+        {
+            var car = await repository.GetByIdAsync<Car>(id);
+
+            return car.RenterId != null;
+
+        }
+
+        public async Task<bool> IsRentedByUserId(int carId, string userId)
+        {
+            var car = await repository.GetByIdAsync<Car>(carId);
+
+            if (car == null || car.RenterId != userId)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task Rent(int carId, string userId)
+        {
+            var car = await repository.GetByIdAsync<Car>(carId);
+
+            var reservationPeriod = await repository.GetByIdAsync<ReservationPeriod>(1);
+
+            var reservation = new Reservation()
+            {
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(reservationPeriod.Days),
+                TotalPrice = car.PricePerDay * reservationPeriod.Days,
+                IsActive = true,
+                CarId = carId,
+                ReservationPeriodId = reservationPeriod.Id,
+
+            };
+
+            await repository.AddAsync(reservation);
+
+            if (car != null)
+            {
+                car.RenterId = userId;
+            }
+
+            await repository.SaveChangesAsync();
+        }
+
+        public async Task<bool> HasDealerWithId(int carId, string currUserId)
+        {
+            var car = await repository.GetByIdAsync<Car>(carId);
+
+            var dealer = await repository.AllReadOnly<Dealer>()
+                .FirstOrDefaultAsync(d => d.Id == car.DealerId);
+
+            if (dealer == null || dealer.UserId != currUserId)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

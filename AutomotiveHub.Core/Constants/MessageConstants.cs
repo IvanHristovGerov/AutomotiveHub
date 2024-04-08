@@ -27,5 +27,8 @@ namespace AutomotiveHub.Core.Constants
         public const string CouldNotCreateCar = "Something's wrong! Please try again.";
 
         public const string SuccessfulCreation = "You have successfully added new car";
+
+        public const string CannotRent = "Something's wrong. You can't rent this car!";
+        public const string SuccessfulRent = "You have rented this car!";
     }
 }
