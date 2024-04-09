@@ -252,7 +252,7 @@ namespace AutomotiveHub.Core.Services
             await repository.SaveChangesAsync();
         }
 
-        public async Task<bool> HasDealerWithId(int carId, string currUserId)
+        public async Task<bool> HasDealerWithIdAsync(int carId, string currUserId)
         {
             var car = await repository.GetByIdAsync<Car>(carId);
 
@@ -276,6 +276,38 @@ namespace AutomotiveHub.Core.Services
                 car.RenterId = null;
                 await repository.SaveChangesAsync();
             }
+        }
+
+
+        public async Task EditAsync(int carId, CarFormModel model)
+        {
+            var car = await repository.GetByIdAsync<Car>(carId);
+
+            if (car != null)
+            {
+                car.Brand = model.Brand;
+                car.Model = model.Model;
+                car.Year = model.Year;
+                car.Kilometers = model.Kilometers;
+                car.Description = model.Description;
+                car.ImageUrl = model.ImageUrl;
+                car.Transmission = model.Transmission;
+                car.Fuel = model.Fuel;
+                car.PricePerDay = model.PricePerDay;
+                car.CategoryId = model.CategoryId;
+
+
+                await repository.SaveChangesAsync();
+            }
+
+
+        }
+
+        public async Task<int> GetCarCategoryId(int carId)
+        {
+            var car = await repository.GetByIdAsync<Car>(carId);
+
+            return car.CategoryId;
         }
     }
 }

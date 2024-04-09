@@ -40,9 +40,13 @@ namespace AutomotiveHub.Core.Contracts
 
         Task Rent(int carId, string userId);
 
-        Task<bool> HasDealerWithId(int carId, string currUserId);
+        Task<bool> HasDealerWithIdAsync(int carId, string currUserId);
 
         Task LeaveAsync(int carId);
+
+        Task EditAsync(int carId, CarFormModel model);
+
+        Task<int> GetCarCategoryId(int carId);
 
 
 

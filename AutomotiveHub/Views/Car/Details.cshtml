@@ -11,14 +11,14 @@
 <div class="container" style="display:inline">
     <div class="row">
         <div class="col-4">
-            <img class="card-img-top" style="width: 20rem;"
+            <img class="card-img-top" style="width: 100%;"
                  src="@Model.ImageUrl" alt="Car Image">
         </div>
         <div class="card col-8 border-0">
             <p style="font-size:25px;"><u>@Model.Brand @Model.Model</u></p>
             <p>Year: <b>@Model.Year</b></p>
-            <p>Gearbox: <b>@Model.Transmission</b></p>
-            <p>Fuel type: <b>@Model.Fuel</b></p>
+            <p>Transmission: <b>@Model.Transmission</b></p>
+            <p>Fuel: <b>@Model.Fuel</b></p>
             <p>
                 Price Per Month:
                 <b>@String.Format("{0:f2}", Model.PricePerDay) BGN</b>

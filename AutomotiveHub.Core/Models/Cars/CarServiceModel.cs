@@ -23,6 +23,10 @@ namespace AutomotiveHub.Core.Models.Cars
         [DisplayName("Price per day")]
         public int PricePerDay { get; set; }
 
+       
+        [Range(CarKilometersMinValue, CarKilometersMaxValue)]
+        public int Kilometers { get; set; }
+
         [StringLength(CarDescriptionMaxLength, MinimumLength = CarDescriptionMinLength, ErrorMessage = LengthMessage)]
         public string Description { get; set; } = string.Empty;
 

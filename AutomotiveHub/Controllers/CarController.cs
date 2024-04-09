@@ -183,5 +183,71 @@ namespace AutomotiveHub.Controllers
 
             return RedirectToAction(nameof(All));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (await carService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false)
+            {
+                return Unauthorized();
+            }
+
+            var car = await carService.GetCarsDetailsIdAsync(id);
+
+            int categoryId = await carService.GetCarCategoryId(car.Id);
+
+            var model = new CarFormModel()
+            {
+                Brand = car.Brand,
+                Year = car.Year,
+                Model = car.Model,
+                Kilometers = car.Kilometers,
+                Description = car.Description,
+                PricePerDay = car.PricePerDay,
+                Fuel = car.Fuel,
+                Transmission = car.Transmission,
+                ImageUrl = car.ImageUrl,
+                CategoryId = categoryId,
+                Categories = await carService.AllCategoriesAsync()
+
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, CarFormModel carModel)
+        {
+            if (await carService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false)
+            {
+                return Unauthorized();
+            }
+
+            if (await carService.CategoryExistAsync(carModel.CategoryId) == false)
+            {
+                ModelState.AddModelError(nameof(carModel.CategoryId), "Category does not exist!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                carModel.Categories = await carService.AllCategoriesAsync();
+
+                return View(carModel);
+            }
+
+            await carService.EditAsync(id, carModel);
+
+            return RedirectToAction(nameof(Details), new { id, info = carModel.GetInformation() });
+        }
     }
 }
