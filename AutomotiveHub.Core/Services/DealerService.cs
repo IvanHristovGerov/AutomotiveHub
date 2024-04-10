@@ -1,4 +1,5 @@
 ﻿using AutomotiveHub.Core.Contracts;
+using AutomotiveHub.Core.Models.Dealer;
 using AutomotiveHub.Infrastructure.Data.Models;
 using AutomotiveHub.Infrastructure.Data.Repository;
 using Microsoft.AspNetCore.Identity;
@@ -22,6 +23,8 @@ namespace AutomotiveHub.Core.Services
             userManager = _userManager;
         }
 
+
+
         public async Task CreateAsync(string userId, string phoneNumber, string name)
         {
             var user = await userManager.FindByIdAsync(userId);
@@ -34,7 +37,7 @@ namespace AutomotiveHub.Core.Services
             };
 
             await repository.AddAsync(dealer);
-            
+
             await repository.SaveChangesAsync();
         }
 
@@ -44,16 +47,53 @@ namespace AutomotiveHub.Core.Services
                 .AnyAsync(d => d.UserId == userId);
         }
 
+
+
         public async Task<int> GetDealerId(string userId)
         {
             return (await repository.AllReadOnly<Dealer>()
-                .FirstOrDefaultAsync(d => d.UserId == userId))?.Id ??0;
+                .FirstOrDefaultAsync(d => d.UserId == userId))?.Id ?? 0;
         }
 
         public async Task<bool> HasDealerPhoneNumber(string phoneNumber)
         {
             return await repository.AllReadOnly<Dealer>()
                 .AnyAsync(d => d.PhoneNumber == phoneNumber);
+        }
+
+        public async Task AddDealershipAsync(string userId, AddDealershipServiceModel model)
+        {
+            var dealer = await repository.AllReadOnly<Dealer>()
+                .FirstOrDefaultAsync(d => d.UserId == userId);
+
+            var dealership = new Dealership()
+            {
+                Name = model.Name,
+                Address = model.Address,
+                CityId = model.CityId,
+                DealerId = dealer?.Id ?? 0
+            };
+
+            await repository.AddAsync(dealership);
+            await repository.SaveChangesAsync();
+
+        }
+        public async Task<IEnumerable<AllCitiesServiceModel>> AllCitiesAsync()
+        {
+            return await repository.All<City>()
+                .OrderBy(c => c.Id)
+                .Select(c => new AllCitiesServiceModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                })
+                .ToListAsync();
+        }
+
+        public async Task<bool> CityExistsById(int cityId)
+        {
+            return await repository.AllReadOnly<City>()
+                 .AnyAsync(c => c.Id == cityId);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutomotiveHub.Core.Models.Dealer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,11 @@ namespace AutomotiveHub.Core.Contracts
 
         Task<bool> HasDealerPhoneNumber(string phoneNumber);
 
+        Task AddDealershipAsync(string userId, AddDealershipServiceModel model);
+
+        Task<IEnumerable<AllCitiesServiceModel>> AllCitiesAsync();
+
+        Task<bool> CityExistsById(int cityId);
         
     }
 }
