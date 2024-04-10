@@ -1,4 +1,5 @@
 ﻿using AutomotiveHub.Infrastructure.Data.Models;
+using AutomotiveHub.Infrastructure.Migrations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -12,6 +13,7 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
 {
     internal class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
+        public ApplicationUser ?AdminUser { get; set; }
 
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
@@ -66,7 +68,24 @@ namespace AutomotiveHub.Infrastructure.Data.SeedDb
             };
 
             user.PasswordHash = passHasher.HashPassword(user, "admintest333");
+
             users.Add(user);
+
+            AdminUser = new ApplicationUser()
+            {
+                Id = "3568d76e-ff9b-4c43-9c03-863154db67b1",
+                UserName = "admin@mail.com",
+                NormalizedUserName = "ADMIN@MAIL.COM",
+                Email = "admin@mail.com",
+                NormalizedEmail = "ADMIN@MAIL.COM",
+                FirstName = "Main",
+                LastName = "Admin",
+                IsActive = true
+
+            };
+
+            AdminUser.PasswordHash = passHasher.HashPassword(AdminUser, "mainadmin123");
+            users.Add(AdminUser);
 
             return users;
         }

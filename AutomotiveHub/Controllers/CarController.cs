@@ -29,6 +29,7 @@ namespace AutomotiveHub.Controllers
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] CarsQueryModel model)
         {
+          
             var query = await carService.AllAsync(
                 model.Category,
                 model.SearchQuery,
@@ -42,6 +43,10 @@ namespace AutomotiveHub.Controllers
 
             model.Categories = await carService.AllCategoriesNamesAsync();
 
+            
+            
+
+            
             return View(model);
         }
 
@@ -248,6 +253,50 @@ namespace AutomotiveHub.Controllers
             await carService.EditAsync(id, carModel);
 
             return RedirectToAction(nameof(Details), new { id, info = carModel.GetInformation() });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (await carService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false)
+            {
+                return Unauthorized();
+            }
+
+            var car = await carService.GetCarsDetailsIdAsync(id);
+
+            var model = new CarDetailsViewModel()
+            {
+                Id = id,
+                Brand = car.Brand,
+                Model = car.Model,
+                ImageUrl = car.ImageUrl,
+                Category = car.Category
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(CarDetailsViewModel carModel)
+        {
+            if (await carService.ExistsAsync(carModel.Id) == false)
+            {
+                return BadRequest();
+            }
+            if (await carService.HasDealerWithIdAsync(carModel.Id, User.Id()) == false)
+            {
+                return Unauthorized();
+            }
+
+            await carService.DeleteAsync(carModel.Id);
+
+            return RedirectToAction(nameof(All));
         }
     }
 }

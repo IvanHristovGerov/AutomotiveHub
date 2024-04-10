@@ -46,7 +46,8 @@ namespace AutomotiveHub.Core.Services
             int currentPage = 1,
             int carsPerPage = 1)
         {
-            var carsToShow = repository.AllReadOnly<Car>();
+            var carsToShow = repository.AllReadOnly<Car>()
+                .Where(c=>c.IsActive == true);
 
             if (category != null)
             {
@@ -104,6 +105,7 @@ namespace AutomotiveHub.Core.Services
         {
             return await repository
                 .All<Car>()
+                .Where(c => c.IsActive == true)
                 .Where(c => c.RenterId == userId)
                 .ProjectToCarServiceModel()
                 .ToListAsync();
@@ -299,8 +301,6 @@ namespace AutomotiveHub.Core.Services
 
                 await repository.SaveChangesAsync();
             }
-
-
         }
 
         public async Task<int> GetCarCategoryId(int carId)
@@ -308,6 +308,14 @@ namespace AutomotiveHub.Core.Services
             var car = await repository.GetByIdAsync<Car>(carId);
 
             return car.CategoryId;
+        }
+
+        public async Task DeleteAsync(int carId)
+        {
+            var car = await repository.GetByIdAsync<Car>(carId);
+            car.IsActive = false;
+
+            await repository.SaveChangesAsync();
         }
     }
 }

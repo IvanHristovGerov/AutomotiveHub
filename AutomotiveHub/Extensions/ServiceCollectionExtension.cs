@@ -4,6 +4,7 @@ using AutomotiveHub.Core.Services;
 using AutomotiveHub.Data;
 using AutomotiveHub.Infrastructure.Data.Models;
 using AutomotiveHub.Infrastructure.Data.Repository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -44,6 +45,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
             })
+                .AddRoles<IdentityRole>()
                .AddEntityFrameworkStores<AutomotiveHubDbContext>();
 
             return services;

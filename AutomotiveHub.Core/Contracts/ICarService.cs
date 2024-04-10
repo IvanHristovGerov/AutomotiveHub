@@ -48,6 +48,8 @@ namespace AutomotiveHub.Core.Contracts
 
         Task<int> GetCarCategoryId(int carId);
 
+        Task DeleteAsync(int carId);
+
 
 
     }

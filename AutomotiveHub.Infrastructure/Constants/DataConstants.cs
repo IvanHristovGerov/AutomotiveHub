@@ -52,6 +52,8 @@
         public const int PricePerDayMaxValue = 2000;
         public const int PricePerDayMinValue = 100;
 
+        public const string AdminRole = "Administrator";
+
        
 
        
