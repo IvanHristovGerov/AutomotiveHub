@@ -1,6 +1,6 @@
 ﻿using AutomotiveHub.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Identity;
-using static AutomotiveHub.Infrastructure.Constants.DataConstants;
+using static AutomotiveHub.Areas.Constants.UserConstants;
 
 namespace Microsoft.AspNetCore.Builder
 {

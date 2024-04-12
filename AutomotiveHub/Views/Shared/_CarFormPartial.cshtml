@@ -37,8 +37,10 @@
             <div class="form-group">
                 <label asp-for="Fuel"></label>
                 <select asp-for="Fuel" class="form-control">
-                    <option value="0">Petrol</option>
-                    <option value="1">Diesel</option>
+                    <option value="0">Diesel</option>
+                    <option value="1">Petrol</option>
+                    <option value="2">LPG</option>
+                    <option value="3">Electrical</option>
                 </select>
                 <span asp-validation-for="Fuel" class="small text-danger"></span>
             </div>

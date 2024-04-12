@@ -142,7 +142,7 @@ namespace AutomotiveHub.Controllers
                 return BadRequest();
             }
 
-            if (await dealerService.ExistsByIdAsync(User.Id()))
+            if (await dealerService.ExistsByIdAsync(User.Id()) && User.IsAdmin() == false)
             {
                 return Unauthorized();
             }
@@ -197,7 +197,7 @@ namespace AutomotiveHub.Controllers
                 return BadRequest();
             }
 
-            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false)
+            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false && User.IsAdmin() == false)
             {
                 return Unauthorized();
             }
@@ -233,7 +233,7 @@ namespace AutomotiveHub.Controllers
                 return BadRequest();
             }
 
-            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false)
+            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false && User.IsAdmin() == false)
             {
                 return Unauthorized();
             }
@@ -243,7 +243,7 @@ namespace AutomotiveHub.Controllers
                 ModelState.AddModelError(nameof(carModel.CategoryId), "Category does not exist!");
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 carModel.Categories = await carService.AllCategoriesAsync();
 
@@ -263,7 +263,7 @@ namespace AutomotiveHub.Controllers
                 return BadRequest();
             }
 
-            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false)
+            if (await carService.HasDealerWithIdAsync(id, User.Id()) == false && User.IsAdmin() == false)
             {
                 return Unauthorized();
             }
@@ -289,7 +289,7 @@ namespace AutomotiveHub.Controllers
             {
                 return BadRequest();
             }
-            if (await carService.HasDealerWithIdAsync(carModel.Id, User.Id()) == false)
+            if (await carService.HasDealerWithIdAsync(carModel.Id, User.Id()) == false && User.IsAdmin() == false)
             {
                 return Unauthorized();
             }

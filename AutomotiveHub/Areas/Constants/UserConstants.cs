@@ -4,9 +4,10 @@
     {
         public const string AreaName = "Administrator";
 
-        public const string AdminRoleName = "Administrator";
-        public const string DealerRoleName = "Dealer";
-        public const string UserRoleName = "User";
+        public const string AdminRole = "Administrator";
+
+        public const string DealerRole = "Dealer";
+      
 
         public const string UsersCacheKey = "UsersCacheKey";
         public const string RentsCacheKey = "RentsCacheKey";
