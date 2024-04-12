@@ -273,9 +273,15 @@ namespace AutomotiveHub.Core.Services
         {
             var car = await repository.GetByIdAsync<Car>(carId);
 
-            if (car != null)
+            var reservation = await repository.All<Reservation>()
+                .Where(r => r.IsActive)
+                .FirstOrDefaultAsync(r => r.CarId == carId);
+
+            if (car != null && reservation !=null)
             {
                 car.RenterId = null;
+                reservation.IsActive = false;
+                
                 await repository.SaveChangesAsync();
             }
         }

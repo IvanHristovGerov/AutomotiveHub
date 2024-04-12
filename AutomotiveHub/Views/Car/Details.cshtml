@@ -1,5 +1,6 @@
 ﻿@model CarDetailsServiceModel
 @inject IDealerService dealerService
+@inject ICarService carService
 
 @{
     ViewBag.Title = "Car Details";
@@ -41,7 +42,7 @@
                    asp-route-id="@Model.Id">Delete</a>
                     }
                     <p></p>
-                    if (!User.IsInRole(DealerRole) || User.IsInRole(AdminRole))
+                    if (User.IsInRole(DealerRole) || User.IsInRole(AdminRole))
                     {
                         @if (Model.IsRented == false)
                         {

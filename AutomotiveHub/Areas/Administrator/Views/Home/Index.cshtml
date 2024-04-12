@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Home Page";
+}
+<body>
+    <div class="container-fluid mt-4 p-4 bg-light text-center">
+        <h2 class="display-4">Administrator Area!</h2>
+        <p class="lead mb-1 mt-3">
+            Options are: <b>read</b>, <b>create</b>,
+            <b>delete</b> and <b>edit</b> cars.
+            <br />It is possible to <b>rent</b> and <b>leave</b> the availible ones, too!
+        </p>
+        <p class="lead mt-1">
+            You can also see <b>all users and dealers</b> and <b>all rents</b> in the system.
+        </p>
+        <hr class="my-4">
+        <a asp-area="" asp-controller="Car" asp-action="All"
+           class="btn btn-secondary btn-lg">All Cars</a>
+        <a asp-area="" asp-controller="Car" asp-action="Add"
+           class="btn btn-secondary btn-lg">Add Car</a>
+        <span>  |   </span>
+        <a asp-area="Administrator" asp-controller="Dealership" asp-action="All"
+           class="btn btn-secondary btn-lg">All Dealerships</a>
+        <span>  |   </span>
+        <a asp-area="Administrator" asp-controller="Rent" asp-action="All"
+           class="btn btn-secondary btn-lg">All Rents</a>
+        <a asp-area="Administrator" asp-controller="User" asp-action="All"
+           class="btn btn-secondary btn-lg">All Users</a>
+    </div>
+</body>
+

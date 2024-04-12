@@ -2,7 +2,7 @@
 
 namespace AutomotiveHub.Areas.Administrator.Controllers
 {
-    public class AdminHomeController : AdminBaseController
+    public class HomeController : AdminBaseController
     {
         public IActionResult Index()
         {

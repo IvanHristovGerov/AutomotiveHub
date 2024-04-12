@@ -2,6 +2,7 @@
 using AutomotiveHub.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using static AutomotiveHub.Areas.Constants.UserConstants;
 
 namespace AutomotiveHub.Controllers
 {
@@ -17,11 +18,20 @@ namespace AutomotiveHub.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (User.IsInRole(AdminRole))
+            {
+                return RedirectToAction("Index", "Home", new { area = "Administrator" });
+            }
             var model = await carService.AllCarsAsync();
             return View(model);
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult AboutUs()
         {
             return View();
         }

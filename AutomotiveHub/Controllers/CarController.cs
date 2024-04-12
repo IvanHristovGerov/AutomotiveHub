@@ -1,11 +1,10 @@
 ﻿using AutomotiveHub.Core.Contracts;
 using AutomotiveHub.Core.Extension;
 using AutomotiveHub.Core.Models.Cars;
-using AutomotiveHub.Core.Models.Dealer;
 using AutomotiveHub.Extensions;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal;
 using Microsoft.AspNetCore.Mvc;
+using static AutomotiveHub.Areas.Constants.UserConstants;
 using static AutomotiveHub.Core.Constants.MessageConstants;
 
 namespace AutomotiveHub.Controllers
@@ -57,7 +56,7 @@ namespace AutomotiveHub.Controllers
 
             IEnumerable<CarServiceModel> model;
 
-            if (await dealerService.ExistsByIdAsync(userId))
+            if (await dealerService.ExistsByIdAsync(userId) || User.IsInRole(AdminRole))
             {
                 var dealerId = await dealerService.GetDealerId(userId);
 
@@ -167,11 +166,17 @@ namespace AutomotiveHub.Controllers
             return RedirectToAction(nameof(Mine));
         }
 
+        [HttpPost]
         public async Task<IActionResult> Leave(int id)
         {
             if (await carService.ExistsAsync(id) == false)
             {
                 return BadRequest();
+            }
+
+            if (!await carService.IsRentedByUserId(id, User.Id()))
+            {
+                return Unauthorized();
             }
 
             try

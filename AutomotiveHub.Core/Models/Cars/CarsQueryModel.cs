@@ -21,6 +21,7 @@ namespace AutomotiveHub.Core.Models.Cars
         [DisplayName("Search by text")]
         public string SearchQuery { get; set; } = string.Empty;
 
+
         public CarSorting Sorting { get; set; }
 
         public IEnumerable<string> Categories { get; set; } = null!;

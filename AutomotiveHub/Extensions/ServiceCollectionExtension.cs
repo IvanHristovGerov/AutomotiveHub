@@ -1,6 +1,8 @@
 ﻿
 using AutomotiveHub.Core.Contracts;
+using AutomotiveHub.Core.Contracts.Admin;
 using AutomotiveHub.Core.Services;
+using AutomotiveHub.Core.Services.Admin;
 using AutomotiveHub.Data;
 using AutomotiveHub.Infrastructure.Data.Models;
 using AutomotiveHub.Infrastructure.Data.Repository;
@@ -15,6 +17,9 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddScoped<ICarService, CarService>();
             services.AddScoped<IDealerService, DealerService>();
+            services.AddScoped<IRentService, RentService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDealershipService, DealershipService>();
 
             return services;
         }
