@@ -34,17 +34,13 @@ namespace AutomotiveHub.Controllers
                 model.SearchQuery,
                 model.Sorting,
                 model.CurrentPage,
-                model.CarsPerPage
-                );
+                CarsQueryModel.CarsPerPage);
+
 
             model.TotalCarsCount = query.TotalCarsCount;
             model.Cars = query.Cars;
 
             model.Categories = await carService.AllCategoriesNamesAsync();
-
-            
-            
-
             
             return View(model);
         }

@@ -10,7 +10,7 @@ namespace AutomotiveHub.Infrastructure.Data.Repository
 {
     public class Repository : IRepository
     {
-        private readonly DbContext context;
+         protected DbContext context;
 
         public Repository(AutomotiveHubDbContext _context)
         {
@@ -46,6 +46,16 @@ namespace AutomotiveHub.Infrastructure.Data.Repository
         public async Task<T> GetByIdAsync<T>(object id) where T : class
         {
             return await DbSet<T>().FindAsync(id);
+        }
+
+        public async Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class
+        {
+            await DbSet<T>().AddRangeAsync(entities);
+        }
+
+        public void Dispose()
+        {
+            this.context.Dispose();
         }
     }
 }

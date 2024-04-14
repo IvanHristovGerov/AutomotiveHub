@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AutomotiveHub.Data
 {
-    public class AutomotiveHubDbContext : IdentityDbContext
+    public class AutomotiveHubDbContext : IdentityDbContext<ApplicationUser>
     {
         public AutomotiveHubDbContext(DbContextOptions<AutomotiveHubDbContext> options)
             : base(options)
@@ -26,21 +26,16 @@ namespace AutomotiveHub.Data
                 .HasMaxLength(20)
                 .IsRequired();
 
-            //builder.Entity<Dealer>()
-            //    .HasOne(d => d.User)
-            //    .WithMany()
-            //    .HasForeignKey(d => d.UserId)
+           
 
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            builder.ApplyConfiguration(new CategoryConfiguration());
-            builder.ApplyConfiguration(new CityConfiguration());
-            builder.ApplyConfiguration(new UserConfiguration());
-            builder.ApplyConfiguration(new DealerConfiguration());
-            builder.ApplyConfiguration(new DealershipConfiguration());
-            builder.ApplyConfiguration(new CarConfiguration());
-            builder.ApplyConfiguration(new ReservationPeriodConfiguration());
-            builder.ApplyConfiguration(new ReservationConfiguration());
+            //builder.ApplyConfiguration(new CategoryConfiguration());
+            //builder.ApplyConfiguration(new CityConfiguration());
+            //builder.ApplyConfiguration(new UserConfiguration());
+            //builder.ApplyConfiguration(new DealerConfiguration());
+            //builder.ApplyConfiguration(new DealershipConfiguration());
+            //builder.ApplyConfiguration(new CarConfiguration());
+            //builder.ApplyConfiguration(new ReservationPeriodConfiguration());
+            //builder.ApplyConfiguration(new ReservationConfiguration());
 
 
 

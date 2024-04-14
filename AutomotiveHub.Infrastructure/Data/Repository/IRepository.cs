@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutomotiveHub.Infrastructure.Data.Repository
 {
-    public interface IRepository
+    public interface IRepository:IDisposable
     {
         IQueryable<T> All<T>() where T : class;
 
@@ -17,5 +17,8 @@ namespace AutomotiveHub.Infrastructure.Data.Repository
         Task<int> SaveChangesAsync();
 
         Task<T> GetByIdAsync<T>(object id) where T : class;
+
+
+        Task AddRangeAsync<T>(IEnumerable<T> entities) where T : class;
     }
 }
