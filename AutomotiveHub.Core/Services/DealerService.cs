@@ -17,7 +17,7 @@ namespace AutomotiveHub.Core.Services
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IRepository repository;
 
-        public DealerService(UserManager<ApplicationUser> _userManager, IRepository _repository)
+        public DealerService(IRepository _repository,UserManager<ApplicationUser> _userManager)
         {
             repository = _repository;
             userManager = _userManager;
