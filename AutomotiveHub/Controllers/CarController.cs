@@ -28,7 +28,7 @@ namespace AutomotiveHub.Controllers
         [HttpGet]
         public async Task<IActionResult> All([FromQuery] CarsQueryModel model)
         {
-          
+
             var query = await carService.AllAsync(
                 model.Category,
                 model.SearchQuery,
@@ -41,7 +41,7 @@ namespace AutomotiveHub.Controllers
             model.Cars = query.Cars;
 
             model.Categories = await carService.AllCategoriesNamesAsync();
-            
+
             return View(model);
         }
 
@@ -124,7 +124,7 @@ namespace AutomotiveHub.Controllers
                 return View(carModel);
             }
 
-            TempData[Success] = SuccessfulCreation;
+            TempData["message"] = "You have successfully added new car";
 
             return RedirectToAction(nameof(Details), new { id = newCarId, information = carModel.GetInformation() });
         }

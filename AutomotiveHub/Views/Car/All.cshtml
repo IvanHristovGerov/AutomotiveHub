@@ -89,7 +89,9 @@
 
 @if (!Model.Cars.Any())
 {
-    <h2 class="text-center">No available vehicles by this criteria</h2>
+    <div class="message-box">
+        <h2 class="text-center">We're sorry, but we couldn't find any vehicles matching your search criteria. Please try again.</h2>
+    </div>
 }
 
 <div class="row">

@@ -5,6 +5,7 @@ using AutomotiveHub.Core.Models.Cars;
 using AutomotiveHub.Infrastructure.Data.Models;
 using AutomotiveHub.Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,8 +41,8 @@ namespace AutomotiveHub.Core.Services
 
 
         public async Task<CarQueryServiceModel> AllAsync(
-            string? category = null,
-            string? searchQuery = null,
+            string category = null,
+            string searchQuery = null,
             CarSorting sorting = CarSorting.Newest,
             int currentPage = 1,
             int carsPerPage = 1)
@@ -49,7 +50,7 @@ namespace AutomotiveHub.Core.Services
             var carsToShow = repository.AllReadOnly<Car>()
                 .Where(c=>c.IsActive == true);
 
-            if (category != null)
+            if (!string.IsNullOrWhiteSpace(category))
             {
                 carsToShow = carsToShow
                     .Where(c => c.Category.Name == category);
