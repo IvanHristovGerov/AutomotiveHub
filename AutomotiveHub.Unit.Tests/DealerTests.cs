@@ -23,6 +23,7 @@ namespace AutomotiveHub.Unit.Tests
         private AutomotiveHubDbContext context;
         private IDealerService dealerService;
         private IDealershipService dealershipService;
+        private IRentService rentService;
         private IRepository repository;
         private UserManager<ApplicationUser> userManager;
 
@@ -174,6 +175,42 @@ namespace AutomotiveHub.Unit.Tests
 
             Assert.That(dealerships.Count(), Is.EqualTo(3));
         }
+
+        //Rent
+        [Test]
+        public async Task ShouldReturnAllRents()
+        {
+            rentService = new RentService(repository);
+
+            var user = new ApplicationUser() { Id = "user", UserName = "", Email = "", FirstName = "", LastName ="" };
+            await repository.AddAsync(user);
+
+            var car = new Car() { Id = 1, Brand = "", Model = "", Description = "", 
+                ImageUrl = "", PricePerDay = 0, Transmission = 0, Fuel = 0, CategoryId = 0, DealerId = 1, IsActive = true, RenterId = "" };
+            await repository.AddAsync(car);
+
+            await repository.AddAsync(new ReservationPeriod() { Id = 1, Days = 3 });
+            var period = await repository.GetByIdAsync<ReservationPeriod>(1);
+
+            await repository.AddAsync(new Reservation()
+            {
+                Id = 1,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                IsActive = true,
+                CarId = car.Id,
+                TotalPrice = 0,
+                ReservationPeriodId = period.Id
+            });
+
+            await repository.SaveChangesAsync();
+
+            var rents = await rentService.AllRentsAsync();
+
+            Assert.That(rents.Count(), Is.EqualTo(1));
+
+        }
+
 
 
         [TearDown]
